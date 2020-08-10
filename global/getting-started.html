@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid Analytics Embed - Getting Started</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="<HOST>/no-shell/pyramid-embed-js.min.js"></script>
+    <style>
+        #embed-container {
+            width:400px;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pyramid Embed Client - Getting Started</h1>
+    <h3>This exapmle uses the quickEmbed() function to load the embed framework.</h3>
+    <div id="embed-container" />
+
+    <script>
+        
+        $(document).ready(function(){
+            PyramidEmbedClient.quickEmbed({
+                container: document.getElementById('embed-container'),
+                host: '<HOST>',
+                userName:'<USERNAME>',
+                password: '<PASSWORD>',
+                contentId: '<CONTENT>',
+            });
+        });
+    </script>
+    
+</body>
+</html>
