@@ -3,7 +3,7 @@ const rimraf = require('rimraf');
 const server=require('node-http-server');
 const commandLineArgs = require('command-line-args')
 const replaceInFiles = require('replace-in-files');
-
+const opn = require('opn');
 
 const optionDefinitions = [
     { name: 'username', alias: 'u', type: String },
@@ -49,6 +49,7 @@ rimraf('./dist',()=>{
             root:'./dist',
         },()=>{
             console.log('Listen, Port '+port);
+            opn('http://localhost:'+port);
         });
     });
 });
