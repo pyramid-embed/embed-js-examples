@@ -2,11 +2,12 @@
 
 ## Running the examples site
 
-Download the source code of this library.
-Open a command-line prompt in the folder where the downloaded library is located.
-Run `node run --content contentId`
-Browse to the example site `http://localhost:8000`
+Download\Clone the source code from this repository.\
+Open a command-line prompt in the folder where the downloaded source code is located.\
+Run `npm i`.\
+Run `node run --content contentId`.\
+Browse to the example site at `http://localhost:8000`.\
 
 You can change the port number using the `--port` flag ('-o' for short).
 
-You can choose the content using the `--content` flag ('-c' for short).
+You can choose the content id to show using the `--content` flag ('-c' for short).
