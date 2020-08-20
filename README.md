@@ -1,5 +1,7 @@
 ﻿# Pyramid Analytics Embed JS Examples
+This is a basic example of using Pyramid's embedding APIs to embed live analytic content created in Pyramid into any other web site or application using JavaScript
 
+For more help on embedding with Pyramid, especially instructions on authentication, scenarios and use of REST APIs together with embedding, please see [online help](https://help.pyramidanalytics.com/Content/Root/developer/reference/Extensibility/Embedding/Embedding.htm)
 ## Running the examples site
 
 Download\Clone the source code from this repository.\
