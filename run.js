@@ -32,12 +32,11 @@ run();
 
 async function run() {
 	const { content, port = 8000, filter, target } = options;
-	/* const { username, password, host } = await inquirer.prompt([
+	const { username, password, host } = await inquirer.prompt([
 		{ type: 'input', name: 'username', message: 'User Name:' },
 		{ type: 'password', name: 'password', message: 'Password:', mask: '*' },
 		{ type: 'input', name: 'host', message: 'Host:' },
-	]); */
-	const { username, password, host } = { username: 'devpa\\\\asaf.benjamin', password: '2wsx3edC', host: 'https://g2prod.pyramidanalytics.com' }
+	]);
 
 	console.log('Removing dist folder...');
 	await rimraf('./dist');
