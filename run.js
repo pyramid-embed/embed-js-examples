@@ -6,6 +6,7 @@ const commandLineArgs = require('command-line-args');
 const replaceInFiles = require('replace-in-files');
 const opn = require('opn');
 const inquirer = require('inquirer');
+const shell = require('shelljs');
 
 const optionDefinitions = [
 	{
@@ -18,6 +19,11 @@ const optionDefinitions = [
 		alias: 'c',
 		type: String,
 	},
+	{
+		name: 'filter',
+		alias: 'f',
+		type: String,
+	},
 ];
 
 const options = commandLineArgs(optionDefinitions);
@@ -25,12 +31,13 @@ const options = commandLineArgs(optionDefinitions);
 run();
 
 async function run() {
-	const { content, port = 8000 } = options;
-	const { username, password, host } = await inquirer.prompt([
+	const { content, port = 8000, filter, target } = options;
+	/* const { username, password, host } = await inquirer.prompt([
 		{ type: 'input', name: 'username', message: 'User Name:' },
 		{ type: 'password', name: 'password', message: 'Password:', mask: '*' },
 		{ type: 'input', name: 'host', message: 'Host:' },
-	]);
+	]); */
+	const { username, password, host } = { username: 'devpa\\\\asaf.benjamin', password: '2wsx3edC', host: 'https://g2prod.pyramidanalytics.com' }
 
 	console.log('Removing dist folder...');
 	await rimraf('./dist');
@@ -59,7 +66,30 @@ async function run() {
 		.pipe({
 			from: /<CONTENT>/g,
 			to: content,
+		})
+		.pipe({
+			from: /<FILTER>/g,
+			to: filter,
+		})
+		.pipe({
+			from: /<TARGET>/g,
+			to: target,
 		});
+
+		console.log('Compile JS App...')
+		shell.cd('dist/embed-js');
+		shell.exec('npm i');
+		shell.exec('npm run build');
+		shell.cd('../..')
+		console.log('Done');
+
+	console.log('Compile React App...')
+	shell.cd('dist/embed-react');
+	shell.exec('npm i');
+	shell.exec('npm run build');
+	shell.cd('../..')
+	console.log('Done');
+
 
 	console.log('Deploying server...');
 	server.deploy(

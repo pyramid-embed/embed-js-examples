@@ -1,25 +1,22 @@
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'none',
   entry: {
-      'getting-started':'./getting-started.js',
+    app: path.join(__dirname, 'src', 'index.js')
+  },
+  target: 'web',
+  resolve: {
+    extensions: ['.js']
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    /* filename: 'website.bundle.js' */
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: '*.html' },
-      ]
-    }),
-  ],
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/index.html')
+    })
+  ]
 };
