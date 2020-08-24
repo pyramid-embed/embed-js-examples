@@ -7,7 +7,13 @@ const replaceInFiles = require('replace-in-files');
 const opn = require('opn');
 const inquirer = require('inquirer');
 const shell = require('shelljs');
-const credentials = require('./src/cred.json');
+
+let credentials;
+try {
+	credentials = require('./src/cred.json');
+} catch (e) {
+	console.log('cant find cred.json');
+}
 
 const optionDefinitions = [
 	{
@@ -33,18 +39,18 @@ run();
 
 async function run() {
 	const { port = 8000 } = options;
-	const { username, password, host } = credentials ? 
-	{
-		username: credentials.username,
-		password: credentials.password,
-		host: credentials.host,
-	}:
-	await inquirer.prompt([
-		{ type: 'input', name: 'username', message: 'User Name:' },
-		{ type: 'password', name: 'password', message: 'Password:', mask: '*' },
-		{ type: 'input', name: 'host', message: 'Host:' },
-	]);
-	
+	const { username, password, host } = credentials ?
+		{
+			username: credentials.username,
+			password: credentials.password,
+			host: credentials.host,
+		} :
+		await inquirer.prompt([
+			{ type: 'input', name: 'username', message: 'User Name:' },
+			{ type: 'password', name: 'password', message: 'Password:', mask: '*' },
+			{ type: 'input', name: 'host', message: 'Host:' },
+		]);
+
 	console.log('Removing dist folder...');
 	await rimraf('./dist');
 
