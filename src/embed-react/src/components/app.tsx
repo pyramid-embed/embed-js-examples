@@ -5,9 +5,13 @@ import {
     Route,
     Link
 } from 'react-router-dom';
+
 import { GettingStarted } from './getting-started';
 import { Filtering } from './filtering';
 import { Targeting } from './targeting';
+import { MultiContent } from './multi-content';
+import { MultiFiltering } from './multi-filtering';
+import { GoToSlide } from './go-to-slide';
 
 export const App = () =>
     <Router>
@@ -17,11 +21,20 @@ export const App = () =>
                 <Link to="/getting-started">Getting Started</Link>
             </li>
             <li>
+                <Link to="/multi-content">Multi Content</Link>
+            </li>
+            <li>
                 <Link to="/basic-filtering">Basic Filtering</Link>
             </li>
             <li>
-                <Link to="/basic-targeting">Basic Filtering</Link>
+                <Link to="/multi-filtering">Multi Filtering</Link>
             </li>
+            <li>
+                <Link to="/basic-targeting">Basic Targeting</Link>
+            </li>
+           {/*  <li>
+                <Link to="/go-to-slide">Go To Slide</Link>
+            </li> */}
         </ul>
 
         <Switch>
@@ -33,6 +46,15 @@ export const App = () =>
             </Route>
             <Route path="/basic-targeting">
                 <Targeting />
+            </Route>
+            <Route path="/multi-targeting">
+                <MultiContent />
+            </Route>
+            <Route path="/multi-filtering">
+                <MultiFiltering />
+            </Route>
+            <Route path="/go-to-slide">
+                <GoToSlide />
             </Route>
         </Switch>
     </Router>

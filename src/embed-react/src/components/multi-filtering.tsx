@@ -1,12 +1,18 @@
 import React from 'react';
 import { PyramidEmbedContainer, Filter, EmbedOptions, Target } from '@pyramid-embed/embed-react';
 
-const config = require('../../../config.json').targeting;
+const config = require('../../../config.json').mutliFiltering;
 
-export const Targeting = () => {
-    const options:EmbedOptions = {
+export const MultiFiltering = () => {
+
+    const filters = Filter.create();
+    config.filters.forEach((f: string) => {
+        filters.addUniqueName(f);
+    });
+
+    const options: EmbedOptions = {
         contentId: config.content,
-        targets: Target.byFilter(Filter.byUniqueName(config.filter),config.targetName),
+        filters: filters,
     };
 
     return (<PyramidEmbedContainer
@@ -15,6 +21,6 @@ export const Targeting = () => {
         userName={'<USERNAME>'}
         password={'<PASSWORD>'}
         style={{ width: 400, height: 400 }}
-        
-        />);
+
+    />);
 }

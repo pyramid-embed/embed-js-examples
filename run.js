@@ -7,6 +7,7 @@ const replaceInFiles = require('replace-in-files');
 const opn = require('opn');
 const inquirer = require('inquirer');
 const shell = require('shelljs');
+const credentials = require('./src/cred.json');
 
 const optionDefinitions = [
 	{
@@ -31,13 +32,19 @@ const options = commandLineArgs(optionDefinitions);
 run();
 
 async function run() {
-	const { content, port = 8000, filter, target } = options;
-	const { username, password, host } = await inquirer.prompt([
+	const { port = 8000 } = options;
+	const { username, password, host } = credentials ? 
+	{
+		username: credentials.username,
+		password: credentials.password,
+		host: credentials.host,
+	}:
+	await inquirer.prompt([
 		{ type: 'input', name: 'username', message: 'User Name:' },
 		{ type: 'password', name: 'password', message: 'Password:', mask: '*' },
 		{ type: 'input', name: 'host', message: 'Host:' },
 	]);
-
+	
 	console.log('Removing dist folder...');
 	await rimraf('./dist');
 
@@ -62,25 +69,21 @@ async function run() {
 			from: /<HOST>/g,
 			to: host,
 		})
-		.pipe({
-			from: /<CONTENT>/g,
-			to: content,
-		})
-		.pipe({
+		/* .pipe({
 			from: /<FILTER>/g,
 			to: filter,
 		})
 		.pipe({
 			from: /<TARGET>/g,
 			to: target,
-		});
+		}) */;
 
-		console.log('Compile JS App...')
-		shell.cd('dist/embed-js');
-		shell.exec('npm i');
-		shell.exec('npm run build');
-		shell.cd('../..')
-		console.log('Done');
+	console.log('Compile JS App...')
+	shell.cd('dist/embed-js');
+	shell.exec('npm i');
+	shell.exec('npm run build');
+	shell.cd('../..')
+	console.log('Done');
 
 	console.log('Compile React App...')
 	shell.cd('dist/embed-react');

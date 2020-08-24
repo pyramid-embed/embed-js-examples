@@ -1,0 +1,25 @@
+{
+    "gettingStarted": {
+        "content": "4233d007-bf33-4b98-a014-26599c6014d9"
+    },
+    "filtering": {
+        "content": "4233d007-bf33-4b98-a014-26599c6014d9",
+        "filter": "[manufacturers].[Manufacturer].[Acme]"
+    },
+    "mutliFiltering": {
+        "content": "",
+        "filters": []
+    },
+    "targeting": {
+        "content": "",
+        "targetName": "",
+        "filter": ""
+    },
+    "multiContent": {
+        "discoveryContent": "",
+        "presentationContent": ""
+    },
+    "goToSlide": {
+        "content": "7f5ca087-15d5-4dc7-8a2a-fe5857277eeb"
+    }
+}
