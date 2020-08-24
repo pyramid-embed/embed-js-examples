@@ -11,17 +11,16 @@ For more help on embedding with Pyramid, especially instructions on authenticati
 
   
 
-Download\Clone the source code from this repository.\
+Download\Clone the source code from this repository.
 
 Open the `src\config.json` file, and update the demo properties accordinaly (See below).
 
-Open a command-line prompt in the folder where the downloaded source code is located.\
+Open a command-line prompt in the folder where the downloaded source code is located.
+Run `npm i`.
 
-Run `npm i`.\
+Run `node run`.
 
-Run `node run`.\
-
-Browse to the example site at `http://localhost:8000`.\
+Browse to the example site at `http://localhost:8000`.
 
 You can change the port number using the `--port` flag ('-o' for short).
 
