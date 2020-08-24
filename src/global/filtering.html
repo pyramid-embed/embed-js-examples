@@ -17,8 +17,7 @@
 </head>
 
 <body>
-    <h1>Pyramid Embed Client - Getting Started</h1>
-    <h3>This exapmle uses the quickEmbed() function to load the embed framework.</h3>
+    <h1>Pyramid Embed Client - Filtering</h1>
     <div id="embed-container" />
 
     <script>
@@ -31,7 +30,8 @@
                     host: '<HOST>',
                     userName: '<USERNAME>',
                     password: '<PASSWORD>',
-                    contentId: config.gettingStarted.content,
+                    contentId: config.filtering.content,
+                    filters: Filter.byUniqueName(config.filtering.filter),
                 });
             });
         });

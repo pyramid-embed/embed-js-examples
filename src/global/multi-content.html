@@ -9,7 +9,7 @@
     <script src="<HOST>/no-shell/pyramid-embed-js.min.js"></script>
     <script src="../config.json"></script>
     <style>
-        #embed-container {
+        #div {
             width: 400px;
             height: 400px;
         }
@@ -17,21 +17,28 @@
 </head>
 
 <body>
-    <h1>Pyramid Embed Client - Getting Started</h1>
-    <h3>This exapmle uses the quickEmbed() function to load the embed framework.</h3>
-    <div id="embed-container" />
-
+    <h1>Pyramid Embed Client - Multi Content</h1>
+    <div id="embed-container-dis" />
+    <div id="embed-container-pre" />
     <script>
 
         $(document).ready(function () {
 
             $.getJSON('../config.json', (config) => {
                 PyramidEmbedClient.quickEmbed({
-                    container: document.getElementById('embed-container'),
+                    container: document.getElementById('embed-container-dis'),
                     host: '<HOST>',
                     userName: '<USERNAME>',
                     password: '<PASSWORD>',
-                    contentId: config.gettingStarted.content,
+                    contentId: config.multiContent.discoveryContent,
+                });
+
+                PyramidEmbedClient.quickEmbed({
+                    container: document.getElementById('embed-container-pre'),
+                    host: '<HOST>',
+                    userName: '<USERNAME>',
+                    password: '<PASSWORD>',
+                    contentId: config.multiContent.presentationContent,
                 });
             });
         });
