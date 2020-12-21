@@ -16,9 +16,10 @@ Download\Clone the source code from this repository.
 Open the `src\config.json` file, and update the demo properties accordinaly (See below).
 
 Open a command-line prompt in the folder where the downloaded source code is located.
-Run `npm i`.
 
-Run `node run`.
+Run `npm i`
+
+Run `node run`
 
 Browse to the example site at `http://localhost:8000`.
 
